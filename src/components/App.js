@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const App = () => {
-  return (
-    <h2>ninghao.net</h2>
-  )
+class App extends Component {
+  render () {
+    return (
+      <h2>ninghao.net</h2>
+    )
+  }
 }
 
 export default App
