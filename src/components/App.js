@@ -5,9 +5,15 @@ class App extends Component {
     header: 'ninghao.net'
   }
 
+  changeHeader = () => {
+    this.setState({
+      header: '😄'
+    })
+  }
+
   render () {
     return (
-      <h2>{ this.state.header }</h2>
+      <h2 onClick={ this.changeHeader }>{ this.state.header }</h2>
     )
   }
 }
