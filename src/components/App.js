@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 
 class Header extends Component {
+  state = {
+    emoji: '👪'
+  }
+
   render () {
     return (
-      <h2 onClick={ () => this.props.changeHeader() } >
+      <h2 onClick={ (event) => this.props.changeHeader(event, this.state.emoji) }>
         { this.props.header }
       </h2>
     )
@@ -15,10 +19,11 @@ class App extends Component {
     header: 'ninghao.net'
   }
 
-  changeHeader = () => {
+  changeHeader = (event, emoji) => {
     this.setState({
-      header: '😄'
+      header: emoji
     })
+    console.log(event, emoji)
   }
 
   render () {
