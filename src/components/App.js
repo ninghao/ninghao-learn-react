@@ -1,5 +1,15 @@
 import React, { Component } from 'react'
 
+class Header extends Component {
+  render () {
+    return (
+      <h2 onClick={ () => this.props.changeHeader() } >
+        { this.props.header }
+      </h2>
+    )
+  }
+}
+
 class App extends Component {
   state = {
     header: 'ninghao.net'
@@ -13,7 +23,7 @@ class App extends Component {
 
   render () {
     return (
-      <h2 onClick={ this.changeHeader }>{ this.state.header }</h2>
+      <Header changeHeader={ this.changeHeader } header={ this.state.header } />
     )
   }
 }
