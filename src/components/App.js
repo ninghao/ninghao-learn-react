@@ -14,9 +14,15 @@ class Header extends Component {
   }
 }
 
+const Message = (props) => {
+  return <div>{ props.message }</div>
+}
+
 class App extends Component {
   state = {
-    header: 'ninghao.net'
+    header: 'ninghao.net',
+    message: 'SHOW MESSAGE!',
+    show: false
   }
 
   changeHeader = (event, emoji) => {
@@ -26,9 +32,23 @@ class App extends Component {
     console.log(event, emoji)
   }
 
+  handleClick = () => {
+    this.setState({
+      show: !this.state.show
+    })
+  }
+
   render () {
     return (
-      <Header changeHeader={ this.changeHeader } header={ this.state.header } />
+      <div>
+        <Header changeHeader={ this.changeHeader } header={ this.state.header } />
+        <button onClick={ this.handleClick }>
+          { this.state.show ? 'Hide': 'Show' }
+        </button>
+        { this.state.show &&
+          <Message message={ this.state.message } />
+        }
+      </div>
     )
   }
 }
