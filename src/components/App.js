@@ -21,8 +21,12 @@ const Message = (props) => {
 class App extends Component {
   state = {
     header: 'ninghao.net',
-    message: 'SHOW MESSAGE!',
-    show: false
+    show: false,
+    messages: [
+      { id: 0, text: 'hello ~'},
+      { id: 1, text: 'hola ~'},
+      { id: 3, text: '您好 ~'}
+    ]
   }
 
   changeHeader = (event, emoji) => {
@@ -39,6 +43,13 @@ class App extends Component {
   }
 
   render () {
+    const { messages } = this.state
+    const messageItems = messages.map(message => {
+      return <Message key={ message.id } message={ message.text } />
+    })
+
+    console.log(messageItems)
+
     return (
       <div>
         <Header changeHeader={ this.changeHeader } header={ this.state.header } />
@@ -46,7 +57,7 @@ class App extends Component {
           { this.state.show ? 'Hide': 'Show' }
         </button>
         { this.state.show &&
-          <Message message={ this.state.message } />
+          messageItems
         }
       </div>
     )
